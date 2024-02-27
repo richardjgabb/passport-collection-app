@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*HEADER STYLES*/
+
+.tripTitleDiv {
+    background-color: #e8c16c;
+    border-radius: 0 30px 30px 0;
+    margin: 30px 0 20px 0;
+    width: 85vw;
+    padding: 2%;
+    height: fit-content;
+}
+
+#logoImage {
+    width: clamp(50vw, 50vw, 60vw);
+    max-width: 85vw;
+}
+
+/*FILTER STYLES*/
+
+.filterDiv {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: navy;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 90vw;
+    border-radius: 10px 0 0 10px;
+    align-self: flex-end;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+/*PASSPORT PAGE STYLE*/
+
+.passportPage {
+    width: 90vw;
+    min-height: 75vh;
+    margin: auto;
+    padding: 10% 2%;
+    background-image: url("images/passportBackground.png");
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.passportDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
+
+}
+
+/*PASSPORT STAMP STYLES*/
+
+.stamp {
+    display: flex;
+    width: clamp(150px, 150px, 180px);
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0;
+}
+
+img {
+    width: clamp(150px, 150px, 180px);
+}
