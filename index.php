@@ -1,12 +1,6 @@
 <?php
 
 require_once('dbConnection.php');
-
-$query = $db->prepare('SELECT `airport`,`country`, `date`, `image`, `rating`, `review`
-FROM `stamps`');
-$query->execute();
-
-$database = $query->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -45,15 +39,20 @@ $database = $query->fetchAll();
         <div class="passportPage">
         <div class="passportDiv">
             <?php
-            if (($_GET['sortBy'] === 'date') || ($_GET['sortBy'] === 'country') || ($_GET['sortBy'] === 'rating')) {
+            if (!isset($_GET['sortBy'])) {
+                $sorter = 'date';
+                $query = $db->prepare("SELECT `airport`,`country`, `date`, `image`, `rating`, `review`
+                FROM `stamps`
+                ORDER BY `" . $sorter . "`;");
+                $query->execute();
+                $database = $query->fetchAll();
+            } elseif (($_GET['sortBy'] === 'date') || ($_GET['sortBy'] === 'country') || ($_GET['sortBy'] === 'rating')) {
                 $sorter = $_GET['sortBy'];
                 $query = $db->prepare("SELECT `airport`,`country`, `date`, `image`, `rating`, `review`
                 FROM `stamps`
                 ORDER BY `" . $sorter . "`;");
                 $query->execute();
                 $database = $query->fetchAll();
-            } else {
-                $_GET['sortBy'] = 'date';
             }
 
             foreach ($database as $item){
