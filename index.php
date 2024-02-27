@@ -28,19 +28,34 @@ $database = $query->fetchAll();
             <option value="country">Country</option>
             <option value="rating">Rating</option>
         </select>
+
         <a href="newEntry.php">Add Entry</a>
-        <select name="sortBy" id="sortBy">
-            <option value="dateNewest">Date, newest first</option>
-            <option value="dateOldest">Date, oldest first</option>
-            <option value="ratingAscending">Rating, ascending</option>
-            <option value="ratingDescending">Rating, descending</option>
-        </select>
+
+        <form action="index.php" method="get">
+            <select name="sortBy" id="sortBy">
+                <option value="date">Date</option>
+                <option value="rating">Rating</option>
+                <option value="country">Country</option>
+            </select>
+            <input type="submit">
+        </form>
     </section>
 
     <main>
         <div class="passportPage">
         <div class="passportDiv">
             <?php
+            if (($_GET['sortBy'] === 'date') || ($_GET['sortBy'] === 'country') || ($_GET['sortBy'] === 'rating')) {
+                $sorter = $_GET['sortBy'];
+                $query = $db->prepare("SELECT `airport`,`country`, `date`, `image`, `rating`, `review`
+                FROM `stamps`
+                ORDER BY `" . $sorter . "`;");
+                $query->execute();
+                $database = $query->fetchAll();
+            } else {
+                $_GET['sortBy'] = 'date';
+            }
+
             foreach ($database as $item){
                 $rotation = rand(-20, 20);
                 echo "<div class='stamp'>
