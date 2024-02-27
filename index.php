@@ -1,42 +1,12 @@
 <?php
 
-if (isset($_POST['airport'])) {
-
-    $airport = $_POST['airport'];
-    $country = $_POST['country'];
-    $date = $_POST['date'];
-    $image = $_POST['image'];
-    $rating = $_POST['rating'];
-    $review = $_POST['review'];
-
-    $db = new PDO('mysql:host=db;dbname=passportStampsDatabase', 'root', 'password');
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-    $query = $db->prepare('INSERT INTO `stamps` (`airport`, `country`, `date`, `image`, `rating`, `review`)
-    VALUES (:airport, :country, :date, :image, :rating, :review);');
-
-    $query->bindParam(':airport', $airport);
-    $query->bindParam(':country', $country);
-    $query->bindParam(':date', $date);
-    $query->bindParam(':image', $image);
-    $query->bindParam(':rating', $rating);
-    $query->bindParam(':review', $review);
-
-    $query->execute();
-}
-
-$db = new PDO('mysql:host=db;dbname=passportStampsDatabase', 'root', 'password');
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+require_once('dbConnection.php');
 
 $query = $db->prepare('SELECT `airport`,`country`, `date`, `image`, `rating`, `review`
 FROM `stamps`');
 $query->execute();
 
 $database = $query->fetchAll();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +22,6 @@ $database = $query->fetchAll();
             <img id="logoImage" src="images/TRIP-Photoroom.png-Photoroom.png" alt="Trip Logo">
         </div>
     </header>
-
     <section class="filterDiv">
         <select name="filterBy" id="filterBy">
             <option value="date">Date</option>
@@ -76,10 +45,8 @@ $database = $query->fetchAll();
                 $rotation = rand(-20, 20);
                 echo "<div class='stamp'>
                 <img src='{$item['image']}' style='rotate: {$rotation}deg'>"  .'<br></div>';
-//                echo '<p class="stampInfoTag">' . $item['country'] . ': '. $item['date'] . '</p></div>';
             }
             ?>
-
         </div>
         </div>
     </main>

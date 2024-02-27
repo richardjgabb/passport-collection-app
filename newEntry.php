@@ -1,7 +1,3 @@
-<?php
-
-
-?>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +13,7 @@
     </div>
 </header>
 <section class="passportPage">
-    <form action="index.php" method="post">
+    <form action="formComplete.php" method="post">
         <input type="text" name="airport" placeholder="Airport:">
         <input type="text" name="country" placeholder="Country:">
         <input type="date" name="date" placeholder="Date:">
@@ -27,8 +23,5 @@
         <input type="submit">
     </form>
 </section>
-
-
-
 </body>
 </html>
