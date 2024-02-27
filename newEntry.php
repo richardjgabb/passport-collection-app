@@ -25,7 +25,6 @@
         <input type="number" min="1" max="5" name="rating" placeholder="Rating:">
         <input type="text" name="review" placeholder="Review:">
         <input type="submit">
-        <button onclick="history.go(-1)">Back</button>
     </form>
 </section>
 

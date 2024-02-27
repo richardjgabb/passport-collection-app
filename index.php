@@ -1,6 +1,6 @@
 <?php
 
-if (!isset($_POST['airport'])) {
+if (isset($_POST['airport'])) {
 
     $airport = $_POST['airport'];
     $country = $_POST['country'];
