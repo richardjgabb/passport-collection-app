@@ -1,7 +1,9 @@
 <?php
 require_once('dbConnection.php');
 
-if (isset($_POST['airport'])) {
+if ((!isset($_POST['airport'])) || (!isset($_POST['country'])) || (!isset($_POST['date']))){
+    echo 'Incomplete Form';
+        } else {
 
     $airport = $_POST['airport'];
     $country = $_POST['country'];

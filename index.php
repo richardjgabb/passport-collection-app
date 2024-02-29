@@ -8,36 +8,73 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-    <header>
-        <div class="tripTitleDiv">
-            <img id="logoImage" src="#" alt="Logo">
-            <section class="sortByDiv">
-                <a href="newEntry.php">New trip</a>
+<main>
+
+        <?php
+        require_once 'homepage.php';
+        ?>
+
+
+    <section class="content">
+    <div class="sort flex" id="passportPage">
+
+        <a href="newEntry.php">New trip</a>
+
+            <div class="dropdowns flex">
+
                 <form action="index.php" method="get">
                     <select name="sortBy" id="sortBy" onchange="this.form.submit();">
                         <option value="" disabled selected hidden>Sort by </option>
                         <option value="date">Date</option>
                         <option value="rating">Rating</option>
-                        <option value="country">Country</option>
                     </select>
                 </form>
-            </section>
-        </div>
-    </header>
 
-    <main>
-        <div class="passportPage">
-        <div class="passportDiv">
+                <form action="index.php#passportPage" method="get">
+                    <select name="countryFilter" id="countryFilter" onchange="this.form.submit();">
+                        <option value="" disabled selected hidden>Filter by country</option>
+                        <?php
+                        require_once('dbConnection.php');
+                        $query = $db->prepare("SELECT `country`
+                        FROM `stamps`");
+                        $query->execute();
+                        $countries = $query->fetchAll();
+                        echo "<option value='%'>All</option>";
+
+                        foreach ($countries as $country){
+                            echo "<option value=".$country['country'].">".$country['country']."</option>";
+                        }
+                        ?>
+                    </select>
+                </form>
+            </div>
+
+    </div>
+
+        <section class="passportDiv">
             <?php
-            require_once('dbConnection.php');
-            if (!isset($_GET['sortBy'])) {
-                $sorter = 'date';
-            } elseif (($_GET['sortBy'] === 'date') || ($_GET['sortBy'] === 'country') || ($_GET['sortBy'] === 'rating')) {
-                $sorter = $_GET['sortBy'];
+
+            if(!isset($_GET['countryFilter']) && (!isset($_SESSION['filter']))) {
+                $_SESSION['filter'] = '%';
+            }elseif (isset($_GET['countryFilter'])) {
+                $_SESSION['filter'] = $_GET['countryFilter'];
+            } else {
+                $filter = $_SESSION['filter'];
             }
-            $query = $db->prepare("SELECT `airport`,`country`, `date`, `image`, `rating`, `review`, `id`
+
+            if (!isset($_GET['sortBy'])) {
+                $_SESSION['sorter'] = 'date';
+            } elseif (($_GET['sortBy'] === 'date') || ($_GET['sortBy'] === 'rating')) {
+                $_SESSION['sorter'] = $_GET['sortBy'];
+            }
+            $sorter = $_SESSION['sorter'];
+            $filter = $_SESSION['filter'];
+            $query = $db->prepare("SELECT `airport`,`country`, `date`, `image`, `rating`, `review`, `id`, `deleted`
             FROM `stamps`
-            ORDER BY `" . $sorter . "`;");
+            WHERE `deleted` IS NULL && `country` LIKE '$filter'
+            ORDER BY `" . $sorter . "`
+            LIMIT 9;");
+
             $query->execute();
             $database = $query->fetchAll();
 
@@ -47,8 +84,9 @@
                 <a href='infoPage.php?id={$item['id']}'><img src='{$item['image']}' style='rotate: {$rotation}deg'></a>"  .'<br></div>';
             }
             ?>
-        </div>
-        </div>
+        </section>
+    </section>
     </main>
+
 </body>
 </html>

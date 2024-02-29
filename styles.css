@@ -1,207 +1,491 @@
-body {
-    margin: 0;
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.header {
     display: flex;
     flex-direction: column;
+    background-image: url("images/waterBackground.png");
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
 }
 
-/*HEADER STYLES*/
-
-.tripTitleDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-image: url("images/sailboat.png");
-    background-size: cover;
-    background-position: right;
-    height: 30vh;
-    padding: 2%;
+.header h1 {
+    color: #F4F2F5;
 }
 
-#logoImage {
-    width: clamp(50vw, 50vw, 60vw);
-    max-width: 85vw;
-}
-
-.sortByDiv {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-header a {
-    font-size: 24pt;
-    padding: 0.7rem;
-}
-
-header a, input, .cardBottom button {
-    display: inline-block;
-    background-color: rgba(77, 77, 77, 0.44);
-    width: fit-content;
-    margin: 0.2rem;
-    color: #ffffff;
+.header a {
+    background-color: #d3C2b0;
+    border: solid #F4F2F5 2px;
+    padding: 0.3rem;
+    font-size: 1.5rem;
+    color: #F4F2F5;
     text-decoration: none;
-    outline: 0;
-    border: 0;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgb(45 35 66 / 40%), 0 7px 13px -3px rgb(45 35 66 / 30%), inset 0 -3px 0 rgba(214, 214, 231, 0.24);
-    border-radius: 0.2em;
+    text-align: center;
+    margin-top: 60vh;
 }
 
-header a {
-    transition: box-shadow 0.15s ease, transform 0.15s ease;
-    will-change: box-shadow, transform;
+.content {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #F4F2F5;
 }
 
-header a:hover {
-    box-shadow: 0 4px 8px rgb(45 35 66 / 40%), 0 7px 13px -3px rgb(45 35 66 / 30%), inset 0 -3px 0 rgba(214, 214, 231, 0.2);
-    transform: translateY(-2px);
-}
-header a:active{
-    box-shadow: inset 0 3px 7px rgba(214, 214, 231, 0.27);
-    transform: translateY(2px);
-}
-
-
-/*DROPDOWN STYLES*/
-
-select {
-    width: 8rem;
-    font-size: 16pt;
-    color: white;
-    margin: 0.2rem;
-    background-color: rgba(77, 77, 77, 0.44);
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgb(45 35 66 / 40%), 0 7px 13px -3px rgb(45 35 66 / 30%), inset 0 -3px 0 rgba(158, 158, 166, 0.24);
-}
-
-select:required:invalid {
-    color: #666;
-}
-option[value=""][disabled] {
+.hidden {
     display: none;
 }
-option {
-    color: #000;
+.sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F4F2F5;
+    padding: 1rem 2rem ;
 }
 
-/*PASSPORT PAGE STYLE*/
+.dropdowns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
 
-.passportPage {
-    padding: 2%;
-    background-color: rgba(210, 210, 210, 0.15);
+select {
+    background-color: #d3C2b0;
+        color: #F4F2F5;
+        border: solid 1px #F4F2F5;
+        outline: none;
+        border-radius: 5px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    padding-inline: 1rem;
+    justify-content: space-between;
+    background-color: #086FA5;
+    height: 10vh;
+}
+
+nav a, .sort a{
+    background-color: #d3C2b0;
+        border: solid #F4F2F5 2px;
+    padding: 0.3rem;
+        font-size: 1.5rem;
+        color: #F4F2F5;
+        text-decoration: none;
+        text-align: center;
 }
 
 .passportDiv {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 0;
-    justify-content: space-evenly;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #F4F2F5;
 }
-
-/*PASSPORT STAMP STYLES*/
 
 .stamp {
     display: flex;
-    border-radius: 10px;
-    width: 40%;
     align-items: center;
-    justify-content: center;
-    margin: 5px 0;
-}
-
-img {
     width: 95%;
 }
 
-/*INFO CARD STYLES*/
-
-.card {
+.stamp a{
     display: flex;
-    padding: 0.7rem;
-    flex-direction: column;
-    background-color: rgba(197, 206, 203, 0.59);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
-.card form {
-    display: flex;
-    justify-content: flex-end;
+img {
+    max-width: 90%;
+}
+
+.card {
+    display: grid;
+    background-color: rgba(244, 242, 245, 0.44);
+    border-radius: 1.5rem;
+    margin: 1rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.spanTwoColumns {
+    grid-column: span 2;
+}
+
+.topCard {
+    padding: 1rem;
+    margin-top: 1rem;
 }
 
 h2 {
-    margin: 0.1rem;
-    padding: 0.1rem;
-    font-size: 24pt;
+    margin: 0;
 }
 
 p {
-    font-size: 16pt;
-    padding: 0;
-    margin: 0.2rem;
+    padding: 0 2rem;
+}
+.beach {
+    background-image: url("images/beachBackground.png");
+    background-size: cover;
 }
 
-.cardTop {
-    display: flex;
-    height: 70%;
+button {
+    background-color: #d3C2b0;
+    margin: 1rem;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    border: solid 1px #F4F2F5;
+    color: #F4F2F5;
 }
 
-.cardBottom {
-    height: 30%;
+/*!*NAVBAR STYLES*!*/
+
+/*nav {*/
+/*    display: flex;*/
+/*    width: 100%;*/
+/*    justify-content: space-between;*/
+/*    align-self: flex-start;*/
+/*    height: 8vh;*/
+/*    background-color: #086FA5;*/
+/*    padding: 2vh 3vw;*/
+/*}*/
+
+/*nav a {*/
+/*    background-color: #d3C2b0;*/
+/*    border: solid #F4F2F5 0.2rem;*/
+/*    font-size: 1.5rem;*/
+/*    color: #F4F2F5;*/
+/*    text-decoration: none;*/
+/*    text-align: center;*/
+/*    line-height: 8vh;*/
+/*    width: 30%;*/
+/*}*/
+
+/*!*WATERBACKGROUND STYLES*!*/
+
+/*.waterBackground {*/
+/*    flex-direction: column;*/
+/*    height: 100vh;*/
+/*    background-image: url("images/waterBackground.png");*/
+/*    background-size: cover;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.flex {*/
+/*    display: flex;*/
+/*}*/
+
+/*.waterBackground h1 {*/
+/*    color: #F4F2F5;*/
+/*    font-size: 50pt;*/
+/*    margin-top: 1rem;*/
+/*}*/
+
+/*.waterBackground a {*/
+/*    background-color: #d3C2b0;*/
+/*    border: solid #F4F2F5 5px;*/
+/*    font-size: 24pt;*/
+/*    margin-top: 50vh;*/
+/*    padding: 0.5rem;*/
+/*    color: #F4F2F5;*/
+/*    text-decoration: none;*/
+/*    text-align: center;*/
+/*    line-height: 1;*/
+/*}*/
+
+
+
+
+
+
+
+/*!*HEADER STYLES*!*/
+
+/*.tripTitleDiv {*/
+/*    justify-content: space-between;*/
+/*    background-color: #F4F2F5;*/
+/*    padding: 2%;*/
+/*}*/
+
+/*.leftTitleDiv {*/
+/*    flex-direction: column;*/
+/*    height: 100%;*/
+/*    justify-content: space-between;*/
+/*}*/
+
+/*.sortByDiv {*/
+/*    justify-content: flex-end;*/
+/*    flex-direction: column;*/
+/*    align-items: flex-end;*/
+/*}*/
+
+/*header a {*/
+/*    font-size: 24pt;*/
+/*    padding: 0.7rem;*/
+/*}*/
+
+/*header a, .cardBottom button {*/
+/*    display: inline-block;*/
+/*    background-color: #d3C2b0;*/
+/*    width: fit-content;*/
+/*    margin: 0.2rem;*/
+/*    color: #F4F2F5;*/
+/*    text-decoration: none;*/
+/*    outline: 0;*/
+/*    border: 0;*/
+/*    cursor: pointer;*/
+/*    box-shadow: 0 2px 4px rgb(45 35 66 / 40%), 0 7px 13px -3px rgb(45 35 66 / 30%), inset 0 -3px 0 rgba(214, 214, 231, 0.24);*/
+/*    border-radius: 0.2em;*/
+/*}*/
+
+/*header a {*/
+/*    transition: box-shadow 0.15s ease, transform 0.15s ease;*/
+/*    will-change: box-shadow, transform;*/
+/*}*/
+
+/*header a:hover {*/
+/*    box-shadow: 0 4px 8px rgb(45 35 66 / 40%), 0 7px 13px -3px rgb(45 35 66 / 30%), inset 0 -3px 0 rgba(214, 214, 231, 0.2);*/
+/*    transform: translateY(-2px);*/
+/*}*/
+/*header a:active{*/
+/*    box-shadow: inset 0 3px 7px rgba(214, 214, 231, 0.27);*/
+/*    transform: translateY(2px);*/
+/*}*/
+
+
+/*!*DROPDOWN STYLES*!*/
+
+/*select {*/
+/*    width: 8rem;*/
+/*    font-size: 16pt;*/
+/*    color: #F4F2F5;*/
+/*    margin: 0.2rem;*/
+/*    background-color: #d3C2b0;*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    border-radius: 5px;*/
+/*    box-shadow: 0 2px 4px rgb(45 35 66 / 40%), 0 7px 13px -3px rgb(45 35 66 / 30%), inset 0 -3px 0 rgba(158, 158, 166, 0.24);*/
+/*}*/
+
+/*select:required:invalid {*/
+/*    color: #666;*/
+/*}*/
+/*option[value=""][disabled] {*/
+/*    display: none;*/
+/*}*/
+/*option {*/
+/*    color: #000;*/
+/*}*/
+
+/*!*PASSPORT PAGE STYLE*!*/
+
+
+
+/*.homePassportDiv {*/
+/*    background-color: #F4F2F5;*/
+/*    padding: 2%;*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(3, 1fr);*/
+/*    gap: 10px 0;*/
+/*    min-height: 100vh;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*!*PASSPORT STAMP STYLES*!*/
+
+/*.stamp {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    border-radius: 10px;*/
+/*    margin: 5px 0;*/
+/*}*/
+
+/*img {*/
+/*    width: 95%;*/
+/*}*/
+
+/*!*INFO CARD STYLES*!*/
+
+/*.wrapper {*/
+/*    background-image: url("images/beachBackground.png");*/
+/*    height: 92vh;*/
+/*}*/
+
+/*.card.grid {*/
+/*    display: grid;*/
+/*    gap: 5px;*/
+/*    grid-template-columns: 1fr 1fr;*/
+/*}*/
+
+/*.card {*/
+/*    width: 90%;*/
+/*    border-radius: 0.5rem;*/
+/*    margin: 0.5rem auto;*/
+/*    padding: 0.7rem;*/
+/*    background-color: rgba(244, 242, 245, 0.44);*/
+/*}*/
+
+/*.card form {*/
+/*    display: flex;*/
+/*    justify-content: flex-end;*/
+/*}*/
+
+/*h2 {*/
+/*    margin: 0.1rem;*/
+/*    padding: 3px;*/
+/*    font-size: 18pt;*/
+/*}*/
+
+/*p {*/
+/*    font-size: 12pt;*/
+/*    padding: 0;*/
+/*    margin: 0.2rem;*/
+/*}*/
+
+/*.cardBottom {*/
+/*    grid-column: span 2;*/
+/*    padding: 1rem;*/
+/*}*/
+
+/*.cardBottom button {*/
+/*    padding: 0.5rem;*/
+/*}*/
+
+
+/*.cardTopRight, .cardTopLeft {*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*!*NEW ENTRY PAGE STYLES*!*/
+
+/*.newEntryPage {*/
+/*    flex-direction: column;*/
+/*    align-items:center;*/
+/*    justify-content: flex-start;*/
+/*    background-image: url("images/beachBackground.png");*/
+/*    height: 100vh;*/
+/*    background-size: cover;*/
+/*}*/
+
+.entryForm {
+    display: grid;
+    justify-content: center;
+    width: 90%;
+    gap: 5px;
+    margin: 1em auto;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: 2fr 1fr 1fr 1fr 3fr 1fr ;
+    background-color: rgba(244, 242, 245, 0.44);
+    border-radius: 0.8rem;
     padding: 1rem;
 }
 
-.cardBottom button {
-    padding: 0.5rem;
+.addTripTitle {
+    color: #086FA5;
+    margin: 0 auto;
+    grid-column: 2/ span 2;
+    font-weight: normal;
 }
 
-.cardTopLeft, .cardTopRight {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.date {
+    color: #e7e9ec;
 }
 
-/*NEW ENTRY PAGE STYLES*/
-
-.passportPage form {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: rgba(178, 178, 178, 0.47);
-    border-radius: 0.8rem;
-    padding: 0.3rem;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.passportPage input {
-    margin: 0.3rem;
-    font-size: 20pt;
-    color: #ffffff;
-    height: 4vh;
+input {
+    background-color: #d3C2b0;
+    color: #F4F2F5;
+    border: none;
+    border-radius: 0.2rem;
+    padding-left: 0.3rem;
+    text-align: center;
 }
 
 ::placeholder {
-    color: #cecece;
-}
-
-input.date {
-    font-size: 10pt;
-    color: #cecece;
-    font-weight: bold;
+    color: #e7e9ec;
 }
 
 .halfWidth {
-    width: 40%;
+    grid-column: span 2;
 }
 
 .fullWidth {
-    width: 80%;
-    margin-inline: 4%;
+    grid-column: span 4;
 }
 
-.quarterWidth {
-    width: 25%;
+.columnLeft {
+    justify-self: flex-end;
+    grid-column: span 2;
+    width: 50%;
 }
 
+.columnRight {
+    grid-column: 3/ span 2;
+    width: 50%;
+}
+
+.submit {
+    grid-column: 2/ span 2;
+    justify-self: center;
+    padding-inline: 0.8rem;
+    background-color: #F4F2F5;
+    color: #d3C2b0;
+    border: solid #d3C2b0 2px;
+}
+
+/*.hidden {*/
+/*    display: none;*/
+/*}*/
+
+/*@media screen and (min-width: 650px){*/
+/*    body {*/
+/*        display: flex;*/
+/*        justify-content: center;*/
+/*        flex-direction: row;*/
+/*    }*/
+
+/*    .hidden {*/
+/*        display: inline;*/
+/*        width: 100%;*/
+/*    }*/
+
+/*    .waterBackground {*/
+/*        width: 100%;*/
+/*        height: 100vh;*/
+/*        background-size: cover;*/
+/*    }*/
+
+/*    main {*/
+/*        display: flex;*/
+/*        width: 50%;*/
+/*        flex-direction: column;*/
+/*    }*/
+
+/*    #arrow {*/
+/*        rotate: -90deg;*/
+/*    }*/
+
+/*    .tripTitleDiv {*/
+/*        height: 10vh;*/
+/*    }*/
+
+/*    .newEntryPage {*/
+/*        width: 100%;*/
+/*    }*/
+
+/*    .homePassportDiv {*/
+/*        overflow: hidden;*/
+/*        gap: 0;*/
+/*        height: 90vh;*/
+/*    }*/
+
+/*    .wrapper {*/
+/*        width: 50%;*/
+/*    }*/
+/*}*/

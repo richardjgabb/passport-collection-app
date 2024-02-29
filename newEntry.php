@@ -7,22 +7,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
-    <div class="tripTitleDiv">
-        <img id="logoImage" src="#" alt="Logo">
-        <a href="index.php">Home</a>
-    </div>
-</header>
-<section class="passportPage">
-    <form action="formComplete.php" method="post">
-        <input type="text" name="airport" class="halfWidth" placeholder="Airport:">
+<main>
+<section class="header hidden">
+    <?php
+    require_once 'homepage.php';
+    ?>
+</section>
+
+
+<section class="content beach">
+    <?php
+    require_once 'navbar.php';
+    ?>
+    <form class="entryForm" action="formComplete.php" method="post">
+        <h1 class="addTripTitle">Add trip</h1>
+        <input type="text" name="airport" class="halfWidth" placeholder="City:">
         <input type="text" name="country" class="halfWidth" placeholder="Country:">
         <input type="text" name="image" class="fullWidth" placeholder="Passport stamp:">
-        <input type="date" name="date" class="quarterWidth date" placeholder="Date:">
-        <input type="number" min="1" max="5" name="rating" class="quarterWidth" placeholder="Rating:">
-        <input type="text" name="review" class="fullWidth" placeholder="Review:">
-        <input type="submit">
+        <input type="date" name="date" class="columnLeft date" placeholder="Date:">
+        <input type="number" min="1" max="5" name="rating" class="columnRight" placeholder="Rating:">
+        <input type="text" name="review" class="fullWidth" placeholder="Details:">
+        <input type="submit" class="submit">
     </form>
 </section>
+</main>
 </body>
 </html>
