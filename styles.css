@@ -1,75 +1,295 @@
-body {
-    margin: 0;
+main {
     display: flex;
     flex-direction: column;
 }
 
-
-/*HEADER STYLES*/
-
-.tripTitleDiv {
-    background-color: #e8c16c;
-    border-radius: 0 30px 30px 0;
-    margin: 30px 0 20px 0;
-    width: 85vw;
-    padding: 2%;
-    height: fit-content;
-}
-
-#logoImage {
-    width: clamp(50vw, 50vw, 60vw);
-    max-width: 85vw;
-}
-
-/*FILTER STYLES*/
-
-.filterDiv {
+.header {
     display: flex;
-    justify-content: space-evenly;
-    background-color: navy;
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 90vw;
-    border-radius: 10px 0 0 10px;
-    align-self: flex-end;
-}
-
-a {
-    color: white;
-    text-decoration: none;
-}
-
-/*PASSPORT PAGE STYLE*/
-
-.passportPage {
-    width: 90vw;
-    min-height: 75vh;
-    margin: auto;
-    padding: 10% 2%;
-    background-image: url("images/passportBackground.png");
+    flex-direction: column;
+    background-image: url("images/waterBackground.png");
     background-size: cover;
-    border-radius: 20px;
+    background-repeat: no-repeat;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.header h1 {
+    color: #F4F2F5;
+}
+
+.header a {
+    background-color: #d3C2b0;
+    border: solid #F4F2F5 2px;
+    padding: 0.3rem;
+    font-size: 1.5rem;
+    color: #F4F2F5;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 60vh;
+}
+
+.content {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #F4F2F5;
+}
+
+.hidden {
+    display: none;
+}
+.sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F4F2F5;
+    padding: 1rem 2rem ;
+}
+
+.dropdowns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+select {
+    background-color: #d3C2b0;
+        color: #F4F2F5;
+        border: solid 1px #F4F2F5;
+        outline: none;
+        border-radius: 5px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    padding-inline: 1rem;
+    justify-content: space-between;
+    background-color: #086FA5;
+    height: 10vh;
+}
+
+nav a, .sort a, .nextButtons a{
+    background-color: #d3C2b0;
+        border: solid #F4F2F5 2px;
+    padding: 0.3rem;
+        font-size: 1.5rem;
+        color: #F4F2F5;
+        text-decoration: none;
+        text-align: center;
 }
 
 .passportDiv {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: flex-start;
-
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #F4F2F5;
 }
-
-/*PASSPORT STAMP STYLES*/
 
 .stamp {
     display: flex;
-    width: clamp(150px, 150px, 180px);
+    flex-direction: column;
     align-items: center;
+    width: 95%;
+}
+
+.stamp a{
+    display: flex;
     justify-content: center;
-    margin: 5px 0;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.stamp h3, span {
+    font-size: 12pt;
+    margin: 0;
 }
 
 img {
-    width: clamp(150px, 150px, 180px);
+    max-width: 70%;
+    margin-bottom: 10%;
+}
+
+.card {
+    display: grid;
+    background-color: rgba(244, 242, 245, 0.44);
+    border-radius: 1.5rem;
+    margin: 2rem;
+    grid-template-columns: 1fr 1fr;
+    flex-grow: 1;
+}
+
+.spanTwoColumns {
+    grid-column: span 2;
+}
+
+.topCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.topCard img{
+    max-width: 70%;
+    padding: 3%;
+}
+
+h2 {
+    margin: 0;
+}
+
+p {
+    padding: 0 2rem;
+}
+.beach {
+    background-image: url("images/beachBackground.png");
+    background-size: cover;
+}
+
+button {
+    background-color: #d3C2b0;
+    margin: 1rem;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    border: solid 1px #F4F2F5;
+    color: #F4F2F5;
+}
+
+
+.entryForm {
+    display: grid;
+    justify-content: center;
+    width: 90%;
+    gap: 5px;
+    margin: 1em auto;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: 1fr 1fr 1fr 1fr 3fr 1fr ;
+    background-color: rgba(244, 242, 245, 0.44);
+    border-radius: 0.8rem;
+    padding: 1rem;
+}
+
+.addTripTitle {
+    color: #086FA5;
+    margin: 0 auto;
+    grid-column: 2/ span 2;
+    font-weight: normal;
+}
+
+.date {
+    color: #e7e9ec;
+}
+
+.details {
+    height: 9rem;
+    flex-grow: 1;
+}
+input {
+    background-color: #d3C2b0;
+    height: 3rem;
+    color: #F4F2F5;
+    border: none;
+    border-radius: 0.2rem;
+    padding-left: 0.3rem;
+    text-align: center;
+}
+
+::placeholder {
+    color: #e7e9ec;
+}
+
+.halfWidth {
+    grid-column: span 2;
+}
+
+.fullWidth {
+    grid-column: span 4;
+}
+
+.columnLeft {
+    justify-self: flex-end;
+    grid-column: span 2;
+    width: 50%;
+}
+
+.columnRight {
+    grid-column: 3/ span 2;
+    width: 50%;
+}
+
+.submit {
+    grid-column: 2/ span 2;
+    justify-self: center;
+    padding-inline: 0.8rem;
+    background-color: #F4F2F5;
+    color: #d3C2b0;
+    border: solid #d3C2b0 2px;
+}
+
+.nextButtons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-grow: 1;
+}
+
+@media screen and (min-width: 650px) {
+    main {
+        align-items: center;
+    }
+
+    nav {
+        height: 14vh;
+    }
+
+    nav *{
+        width: 8rem;
+        margin-inline: 3rem ;
+    }
+
+    .header {
+        width: 80%;
+        height: 30vh;
+        margin-block: 5%;
+        border-radius: 2rem;
+    }
+
+    .header h1 {
+        margin-top: 0;
+    }
+
+    .content {
+        background-color: #F4F2F5;
+        width: 100%;
+    }
+
+
+    .passportDiv {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .stamp {
+        width: 22%;
+    }
+
+    .header a {
+        margin-top: 10%;
+    }
+
+    .topCard h2 {
+        font-size: 22pt;
+    }
+
+    p {
+        font-size: 18pt;
+    }
+
 }
