@@ -83,6 +83,9 @@
             $database = $query->fetchAll();
 
             foreach ($database as $item){
+                if ($item['image'] == null){
+                    $item['image'] = 'images/default.png';
+                }
                 $rotation = rand(-40, 40);
                 echo "<div class='stamp'>
                 <a href='infoPage.php?id={$item['id']}'><img src='{$item['image']}' style='rotate: {$rotation}deg'></a><h3>". $item['airport'] . "</h3>";
