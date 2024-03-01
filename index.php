@@ -29,8 +29,8 @@
                 <form action="index.php" method="get">
                     <select name="sortBy" id="sortBy" onchange="this.form.submit();">
                         <option value="" disabled selected hidden>Sort by </option>
-                        <option value="date">Date</option>
-                        <option value="rating">Rating</option>
+                        <option value="date" <?php if(isset($_GET['sortBy']) && $_GET['sortBy'] == 'date'){echo 'selected';}?>>Date</option>
+                        <option value="rating" <?php if(isset($_GET['sortBy']) && $_GET['sortBy'] == 'rating'){echo 'selected';}?>>Rating</option>
                     </select>
                 </form>
 
@@ -46,7 +46,7 @@
                         echo "<option value='%'>All</option>";
 
                         foreach ($countries as $country){
-                            echo "<option value=".$country['country'].">".$country['country']."</option>";
+                            echo "<option value=" . $country['country'] . " >" . $country['country'] . "</option>";
                         }
                         ?>
                     </select>
@@ -77,7 +77,7 @@
             FROM `stamps`
             WHERE `deleted` IS NULL && `country` LIKE '$filter'
             ORDER BY `" . $sorter . "`
-            LIMIT 8;");
+            ");
 
             $query->execute();
             $database = $query->fetchAll();

@@ -34,7 +34,6 @@ main {
     min-height: 100vh;
     flex-direction: column;
     background-color: #F4F2F5;
-    overflow: hidden;
 }
 
 .hidden {
@@ -72,7 +71,7 @@ nav {
     height: 10vh;
 }
 
-nav a, .sort a{
+nav a, .sort a, .nextButtons a{
     background-color: #d3C2b0;
         border: solid #F4F2F5 2px;
     padding: 0.3rem;
@@ -109,15 +108,17 @@ nav a, .sort a{
 }
 
 img {
-    max-width: 90%;
+    max-width: 70%;
+    margin-bottom: 10%;
 }
 
 .card {
     display: grid;
     background-color: rgba(244, 242, 245, 0.44);
     border-radius: 1.5rem;
-    margin: 1rem;
+    margin: 2rem;
     grid-template-columns: 1fr 1fr;
+    flex-grow: 1;
 }
 
 .spanTwoColumns {
@@ -131,6 +132,11 @@ img {
     gap: 1rem;
     padding: 1rem;
     margin-top: 1rem;
+}
+
+.topCard img{
+    max-width: 70%;
+    padding: 3%;
 }
 
 h2 {
@@ -181,6 +187,7 @@ button {
 
 .details {
     height: 9rem;
+    flex-grow: 1;
 }
 input {
     background-color: #d3C2b0;
@@ -224,31 +231,65 @@ input {
     border: solid #d3C2b0 2px;
 }
 
+.nextButtons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-grow: 1;
+}
+
 @media screen and (min-width: 650px) {
     main {
-        flex-direction: row;
+        align-items: center;
+    }
+
+    nav {
+        height: 14vh;
+    }
+
+    nav *{
+        width: 8rem;
+        margin-inline: 3rem ;
     }
 
     .header {
-        width: 40%;
-    }
-
-    .content {
-        width: 60%;
-        max-height: 100vh;
+        width: 80%;
+        height: 30vh;
+        margin-block: 5%;
+        border-radius: 2rem;
     }
 
     .header h1 {
-        rotate: -90deg;
+        margin-top: 0;
     }
+
+    .content {
+        background-color: #F4F2F5;
+        width: 100%;
+    }
+
 
     .passportDiv {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
     }
 
     .stamp {
-        width: 25%;
+        width: 22%;
+    }
+
+    .header a {
+        margin-top: 10%;
+    }
+
+    .topCard h2 {
+        font-size: 22pt;
+    }
+
+    p {
+        font-size: 18pt;
     }
 
 }
