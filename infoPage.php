@@ -9,6 +9,9 @@ if (!isset($_GET['id'])) {
     WHERE `id` = $id;");
     $query->execute();
     $item = $query->fetch();
+    if ($item['image'] == null){
+        $item['image'] = 'images/default.png';
+    }
 
 }
 ?>
